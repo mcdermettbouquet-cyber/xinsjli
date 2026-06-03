@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>汽车之家·新势力商机系统</title>
+<meta property="og:title" content="汽车之家·新势力商机系统">
+<meta property="og:description" content="总部销运组·新势力品牌案例库">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--p:#1565c0;--p2:#0d47a1;--bg:#f5f6f8;--bd:#e8eaed;--t:#1a1a2e;--t2:#555;--t3:#999;--g:#2e7d32;--r:#c62828;--card:#fff}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t);line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:60px}
+
+.hdr{background:linear-gradient(135deg,#1a237e 0%,#1565c0 60%,#1976d2 100%);color:#fff;padding:20px 20px 16px;position:relative;overflow:hidden}
+.hdr::after{content:'';position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.06) 0%,transparent 70%);top:-80px;right:-60px;border-radius:50%}
+.hdr-inner{position:relative;z-index:1}
+.hdr h1{font-size:20px;font-weight:700;letter-spacing:1px}
+.hdr .sub{font-size:12px;opacity:.7;margin-top:3px;letter-spacing:.5px}
+.hdr-stats{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.hdr-stats .hs{background:rgba(255,255,255,.12);border-radius:8px;padding:6px 12px;backdrop-filter:blur(4px);flex:1;min-width:60px}
+.hdr-stats .hn{font-size:18px;font-weight:800}
+.hdr-stats .hl{font-size:10px;opacity:.8}
+.hdr-ts{font-size:10px;opacity:.5;margin-top:10px;text-align:right}
+
+.ptabs{display:flex;background:#fff;border-bottom:1px solid var(--bd);padding:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.ptabs::-webkit-scrollbar{display:none}
+.ptab{padding:13px 14px;cursor:pointer;font-size:13px;font-weight:600;color:var(--t2);border-bottom:3px solid transparent;white-space:nowrap;transition:color .15s;flex-shrink:0}
+.ptab.on{color:var(--p);border-bottom-color:var(--p)}
+.ptab .cnt{font-size:10px;color:var(--t3);margin-left:2px;font-weight:400}
+.ptab.on .cnt{color:var(--p)}
+
+.sbox{padding:12px 16px;background:#fff;border-bottom:1px solid var(--bd)}
+.sbox input{width:100%;padding:10px 14px 10px 38px;border:1.5px solid var(--bd);border-radius:10px;font-size:14px;outline:none;background:#fafbfc;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23999' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:12px center;transition:border-color .2s}
+.sbox input:focus{border-color:var(--p);background-color:#fff}
+
+.filters{display:flex;gap:6px;padding:8px 16px 12px;background:#fff;border-bottom:1px solid var(--bd)}
+.filters select{flex:1;padding:8px 6px;border:1.5px solid var(--bd);border-radius:8px;font-size:12px;outline:none;color:var(--t);background:#fafbfc;min-width:0;appearance:auto}
+.filters select:focus{border-color:var(--p)}
+.fcnt{font-size:12px;color:var(--t3);display:flex;align-items:center;white-space:nowrap;margin-left:4px}
+
+.cases{padding:12px 12px 0}
+.case{background:var(--card);border-radius:12px;padding:16px;margin-bottom:10px;border:1px solid var(--bd);box-shadow:0 1px 3px rgba(0,0,0,.03);transition:box-shadow .2s}
+.case:active{box-shadow:0 1px 8px rgba(0,0,0,.08)}
+.case-head{display:flex;align-items:center;gap:6px;margin-bottom:8px;flex-wrap:wrap}
+.case-brand{font-size:16px;font-weight:700}
+.tag{padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600;white-space:nowrap}
+.tag-city{background:#e3f2fd;color:#1565c0}
+.tag-attr{background:#f3e5f5;color:#7b1fa2}
+.tag-region{background:#fff3e0;color:#e65100}
+.case-meta{font-size:12px;color:var(--t2);margin-bottom:10px;display:flex;gap:10px;flex-wrap:wrap}
+.case-meta span{display:flex;align-items:center;gap:2px}
+.case-results{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.res-box{flex:1;min-width:100px;background:linear-gradient(135deg,#f1f8e9,#e8f5e9);border:1px solid #c8e6c9;border-radius:10px;padding:10px 8px;text-align:center}
+.res-box.neg{background:linear-gradient(135deg,#fff3e0,#ffe0b2);border-color:#ffcc80}
+.res-val{font-size:22px;font-weight:800;color:var(--g)}
+.res-box.neg .res-val{color:var(--r)}
+.res-lbl{font-size:10px;color:var(--t2);margin-top:2px}
+.case-person{display:flex;align-items:center;gap:8px;padding-top:10px;border-top:1px solid #f0f0f0;margin-top:4px}
+.p-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0}
+.p-name{font-size:13px;font-weight:600;color:var(--t)}
+.p-role{font-size:11px;color:var(--t3)}
+
+.fab{position:fixed;bottom:24px;right:16px;z-index:90}
+.fab button{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#1a237e,#1565c0);color:#fff;border:none;font-size:22px;cursor:pointer;box-shadow:0 4px 20px rgba(26,35,126,.4);transition:transform .15s;display:flex;align-items:center;justify-content:center}
+.fab button:active{transform:scale(.95)}
+
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:flex-end;justify-content:center}
+.overlay.show{display:flex}
+.modal{background:#fff;border-radius:20px 20px 0 0;width:100%;max-width:500px;max-height:80vh;overflow-y:auto;padding:20px 16px 30px;-webkit-overflow-scrolling:touch;animation:slideUp .2s ease}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.modal-head h3{font-size:16px;font-weight:700}
+.modal-head .close-btn{background:none;border:none;font-size:24px;color:#999;cursor:pointer;padding:4px 8px;line-height:1}
+.pcard{background:#f8f9fa;border-radius:12px;padding:14px;margin-bottom:10px;border-left:4px solid var(--p)}
+.pcard-name{font-size:15px;font-weight:700;color:var(--p);margin-bottom:4px}
+.pcard-price{font-size:13px;color:var(--r);font-weight:600;margin-bottom:6px}
+.pcard-desc{font-size:12px;color:var(--t2);line-height:1.6;margin-bottom:8px}
+.pcard-sc{background:#fff;border:1px solid var(--bd);border-radius:8px;padding:8px 10px}
+.pcard-sc b{font-size:11px;color:var(--t)}
+.pcard-sc .sc-item{font-size:12px;color:var(--t2);padding:4px 0;border-bottom:1px dashed #eee}
+.pcard-sc .sc-item:last-child{border-bottom:none}
+
+.empty{text-align:center;padding:50px 20px;color:var(--t3)}
+.empty .ei{font-size:44px;margin-bottom:8px;opacity:.5}
+.empty p{font-size:14px}
+.ftr{text-align:center;padding:16px;font-size:11px;color:var(--t3)}
+.ftr .ver{color:var(--p);font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-inner">
+    <h1>新势力商机系统</h1>
+    <div class="sub">汽车之家 · 总部销售运营组 · 15品牌全国案例</div>
+    <div class="hdr-stats">
+      <div class="hs"><div class="hn" id="statTotal">0</div><div class="hl">案例总数</div></div>
+      <div class="hs"><div class="hn" id="statProd">0</div><div class="hl">覆盖产品</div></div>
+      <div class="hs"><div class="hn" id="statCity">0</div><div class="hl">覆盖城市</div></div>
+      <div class="hs"><div class="hn" id="statBrand">0</div><div class="hl">覆盖品牌</div></div>
+    </div>
+    <div class="hdr-ts" id="updateTs"></div>
+  </div>
+</div>
+
+<div class="ptabs" id="ptabs"></div>
+<div class="sbox"><input type="text" id="si" placeholder="搜索经销商、品牌、城市..."></div>
+<div class="filters">
+  <select id="fRegion"><option value="">全部大区</option></select>
+  <select id="fCity"><option value="">全部城市</option></select>
+  <select id="fBrand"><option value="">全部品牌</option></select>
+  <div class="fcnt" id="fcnt">0条</div>
+</div>
+<div class="cases" id="clist"></div>
+<div class="fab"><button onclick="openProd()">?</button></div>
+<div class="overlay" id="omodal">
+  <div class="modal">
+    <div class="modal-head"><h3>产品速查手册</h3><button class="close-btn" onclick="closeProd()">&times;</button></div>
+    <div id="plist"></div>
+  </div>
+</div>
+<div class="ftr">汽车之家 · 总部销售运营组 | 新势力15品牌 | <span class="ver">v1.0</span></div>
+
+<script>
+// ==================== DYNAMIC DATA START ====================
+var CASES=[{"id": 1, "product": "驻店团购", "brand": "比亚迪王朝", "city": "莆田", "province": "福建", "region": "华南", "attr": "自主", "dealer": "莆田XX比亚迪4S店", "person": "彭泽芳", "person_role": "华南大区", "period": "2026-05-04 至 2026-05-09", "results": [{"label": "成交台次", "value": "54台"}, {"label": "成交提升", "value": "+91.1%"}]}, {"id": 2, "product": "驻店团购", "brand": "比亚迪王朝", "city": "厦门", "province": "福建", "region": "华南", "attr": "自主", "dealer": "厦门XX比亚迪4S店", "person": "洪志超", "person_role": "华南大区", "period": "2026-05-04 至 2026-05-09", "results": [{"label": "成交台次", "value": "54台"}, {"label": "成交提升", "value": "+208.6%"}]}, {"id": 3, "product": "新媒体培优", "brand": "一汽丰田", "city": "佛山", "province": "广东", "region": "华南", "attr": "合资", "dealer": "佛山XX丰田4S店", "person": "蓝晓玲", "person_role": "华南大区", "period": "2026-04-22 至 2026-05-22", "results": [{"label": "线索量环比", "value": "+312%"}, {"label": "CPL环比", "value": "-17%"}]}, {"id": 4, "product": "新媒体培优", "brand": "吉利银河星", "city": "东莞", "province": "广东", "region": "华南", "attr": "自主", "dealer": "东莞XX吉利4S店", "person": "陈婵如", "person_role": "华南大区", "period": "2026-04-02 至 2026-05-02", "results": [{"label": "线索量环比", "value": "+240%"}, {"label": "CPL环比", "value": "-121%"}]}];
+var PRODUCTS=[{"name": "驻店团购", "price": "按项目报价", "desc": "5+1陪跑式驻店营销，资深导师带队驻店5天+1天复盘，从蓄客到成交全链路辅导，适合新势力门店快速突破", "scenarios": ["同城理想/蔚来搞露营节，我们客流被截了", "新车上市了但到店转化率太低，客户看完就走", "月底冲量，缺一波集中成交把数做上去"]}, {"name": "新媒体培优", "price": "2-4.3万/店", "desc": "运营诊断+线下辅导+持续陪跑，解决新势力门店抖音/小红书'做了没效果'的问题，从账号定位到内容生产到线索转化全链路优化", "scenarios": ["店总说抖音做了但没效果，线索几乎为零", "厂商Q2要求短视频发布量和直播时长KPI，完成不了要扣罚", "深蓝/小鹏门店被要求执行厂商新媒体政策，运营能力跟不上"]}, {"name": "AI播车", "price": "基础版9K-12K/年 | AIGC版20.8K/年", "desc": "7x24小时智能直播，基础版覆盖直播时长需求，AIGC版自动生成话术+智能互动，比雇主播成本低80%", "scenarios": ["厂商要求每月直播XX小时，门店主播排不过来", "展厅店晚上关门没人直播，白白浪费流量时段", "新势力门店直播需求大但招不到留不住主播"]}, {"name": "百城车展", "price": "品牌端采购/区域费用", "desc": "线上搜索拦截+线下联合车展，线上先截回流量的搜索入口，线下联合周边3-5家一起做，把客流拉回来", "scenarios": ["竞品新势力这周搞快闪/发布会，我们客流被截了", "地方出购车补贴/消费券了，要赶紧组织活动吃这波政策", "单店做活动声量不够，想联合同城几家新势力一起做"]}, {"name": "获客先锋", "price": "基础版9K-12K/年 | 云跟进12K-15K/年 | AIGC版20.8K/年", "desc": "AI运维+AIGC内容分发，自动运营店铺页面+AI生成分发内容，基础版解决日常运维，AIGC版自动生成图文视频并分发", "scenarios": ["门店之家页面没人管，车型信息过期了，客户看了就不来", "厂商考核内容发布量，门店缺人做内容", "新品上市需要大量种草内容铺量，人力跟不上"]}, {"name": "优选宝", "price": "按条扣费", "desc": "之家坐席二次确认有效线索，过滤无效和重复，只把真实意向客户推给门店，提高销售跟进效率", "scenarios": ["线索量看着多但无效的也多，销售白跑浪费时间", "新势力门店线索质量参差不齐，想只要靠谱的", "销售说线索不够，但给的线索又接不住转化不了"]}];
+var UPDATE_TS='06-03 09:30';
+// ==================== DYNAMIC DATA END ====================
+
+var curProd='all',curRegion='',curCity='',curBrand='',sText='';
+function $(id){return document.getElementById(id)}
+
+function init(){
+  renderStats();renderTabs();renderFilters();renderCases();
+  $('si').addEventListener('input',function(e){sText=e.target.value.trim().toLowerCase();renderCases()});
+  $('fRegion').addEventListener('change',function(e){curRegion=e.target.value;renderCases()});
+  $('fCity').addEventListener('change',function(e){curCity=e.target.value;renderCases()});
+  $('fBrand').addEventListener('change',function(e){curBrand=e.target.value;renderCases()});
+  if(PRODUCTS.length>0)renderProdList();
+  $('omodal').addEventListener('click',function(e){if(e.target===this)closeProd()});
+}
+
+function renderStats(){
+  var pS={},cS={},bS={};
+  CASES.forEach(function(c){pS[c.product]=1;cS[c.city]=1;bS[c.brand]=1});
+  $('statTotal').textContent=CASES.length;
+  $('statProd').textContent=Object.keys(pS).length;
+  $('statCity').textContent=Object.keys(cS).length;
+  $('statBrand').textContent=Object.keys(bS).length;
+  if(UPDATE_TS)$('updateTs').textContent='更新: '+UPDATE_TS;
+}
+
+function renderTabs(){
+  var order=['all','驻店团购','新媒体培优','AI播车','百城车展','获客先锋','优选宝'];
+  var pC={};CASES.forEach(function(c){pC[c.product]=(pC[c.product]||0)+1});
+  var existing=['all'];CASES.forEach(function(c){if(existing.indexOf(c.product)===-1)existing.push(c.product)});
+  var sorted=['all'];order.forEach(function(p){if(existing.indexOf(p)!==-1)sorted.push(p)});
+  existing.forEach(function(p){if(sorted.indexOf(p)===-1)sorted.push(p)});
+  var h='';
+  sorted.forEach(function(p){
+    var cls=p===curProd?'ptab on':'ptab';
+    var name=p==='all'?'全部':p;
+    var cnt=p==='all'?CASES.length:(pC[p]||0);
+    h+='<div class="'+cls+'" onclick="swProd(\''+p+'\')">'+name+'<span class="cnt">('+cnt+')</span></div>';
+  });
+  $('ptabs').innerHTML=h;
+}
+
+function swProd(p){curProd=p;renderTabs();renderCases()}
+
+function renderFilters(){
+  var rS={},cS={},bS={};
+  CASES.forEach(function(c){if(c.region)rS[c.region]=1;if(c.city)cS[c.city]=1;if(c.brand)bS[c.brand]=1});
+  var rh='<option value="">全部大区</option>';Object.keys(rS).sort().forEach(function(r){rh+='<option value="'+r+'">'+r+'</option>'});$('fRegion').innerHTML=rh;
+  var ch='<option value="">全部城市</option>';Object.keys(cS).sort().forEach(function(c){ch+='<option value="'+c+'">'+c+'</option>'});$('fCity').innerHTML=ch;
+  var bh='<option value="">全部品牌</option>';Object.keys(bS).sort().forEach(function(b){bh+='<option value="'+b+'">'+b+'</option>'});$('fBrand').innerHTML=bh;
+}
+
+function renderCases(){
+  var list=CASES.filter(function(c){
+    if(curProd!=='all'&&c.product!==curProd)return false;
+    if(curRegion&&c.region!==curRegion)return false;
+    if(curCity&&c.city!==curCity)return false;
+    if(curBrand&&c.brand!==curBrand)return false;
+    if(sText){var s=(c.brand+c.city+c.dealer+c.product+c.person+(c.attr||'')).toLowerCase();if(s.indexOf(sText)===-1)return false}
+    return true;
+  });
+  $('fcnt').textContent=list.length+'条';
+  if(!list.length){$('clist').innerHTML='<div class="empty"><div class="ei">📋</div><p>暂无匹配案例</p></div>';return}
+  var h='';
+  list.forEach(function(c){
+    var resH='';
+    if(c.results&&c.results.length){c.results.forEach(function(r){var isNeg=r.value&&r.value.charAt(0)==='-';resH+='<div class="res-box'+(isNeg?' neg':'')+'"><div class="res-val">'+r.value+'</div><div class="res-lbl">'+r.label+'</div></div>'})}
+    var personH='';
+    if(c.person){var ini=c.person.charAt(0);personH='<div class="case-person"><div class="p-avatar">'+ini+'</div><div><div class="p-name">'+c.person+'</div>'+(c.person_role?'<div class="p-role">'+c.person_role+'</div>':'')+'</div></div>'}
+    h+='<div class="case"><div class="case-head"><span class="case-brand">'+c.brand+'</span><span class="tag tag-city">'+c.city+'</span>'+(c.attr?'<span class="tag tag-attr">'+c.attr+'</span>':'')+(c.region?'<span class="tag tag-region">'+c.region+'</span>':'')+'</div><div class="case-meta">'+(c.dealer?'<span>🏪 '+c.dealer+'</span>':'')+(c.period?'<span>📅 '+c.period+'</span>':'')+'</div>'+(resH?'<div class="case-results">'+resH+'</div>':'')+personH+'</div>';
+  });
+  $('clist').innerHTML=h;
+}
+
+function renderProdList(){
+  var h='';
+  PRODUCTS.forEach(function(p){
+    var scH='';if(p.scenarios&&p.scenarios.length){p.scenarios.forEach(function(s){scH+='<div class="sc-item">"'+s+'"</div>'})}
+    h+='<div class="pcard"><div class="pcard-name">'+p.name+'</div>'+(p.price?'<div class="pcard-price">'+p.price+'</div>':'')+'<div class="pcard-desc">'+p.desc+'</div>'+(scH?'<div class="pcard-sc"><b>客户这么说，你就推这个：</b>'+scH+'</div>':'')+'</div>';
+  });
+  $('plist').innerHTML=h;
+}
+
+function openProd(){$('omodal').classList.add('show')}
+function closeProd(){$('omodal').classList.remove('show')}
+init();
+</script>
+</body>
+</html>
